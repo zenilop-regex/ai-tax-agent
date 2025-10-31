@@ -321,29 +321,29 @@ if "current_client" in st.session_state:
     else:
         client_id = client["client_id"]
         client_dir = os.path.join(DATA_DIR, client_id)
-    
-    st.markdown("### 👤 Client Dashboard")
-    st.json(client)
-    
-    # ==================== Danger Zone ====================
-    st.markdown("### 🗑️ Danger Zone")
-    if st.button("🗑️ Delete This Client", type="primary"):
-        try:
-            if os.path.exists(client_dir):
-                shutil.rmtree(client_dir)
-            
-            json_file_path = os.path.join(DATA_DIR, f"{client_id}.json")
-            if os.path.exists(json_file_path):
-                os.remove(json_file_path)
-            
-            keys_to_clear = ["current_client", "form16_data", "uploaded_pdf", "edit_fields_initialized", "itd_json"]
-            for key in keys_to_clear:
-                st.session_state.pop(key, None)
-            
-            st.success("✅ Client deleted successfully.")
-            st.rerun()
-        except Exception as e:
-            st.error(f"Error deleting client: {str(e)}")
+        
+        st.markdown("### 👤 Client Dashboard")
+        st.json(client)
+        
+        # ==================== Danger Zone ====================
+        st.markdown("### 🗑️ Danger Zone")
+        if st.button("🗑️ Delete This Client", type="primary"):
+            try:
+                if os.path.exists(client_dir):
+                    shutil.rmtree(client_dir)
+                
+                json_file_path = os.path.join(DATA_DIR, f"{client_id}.json")
+                if os.path.exists(json_file_path):
+                    os.remove(json_file_path)
+                
+                keys_to_clear = ["current_client", "form16_data", "uploaded_pdf", "edit_fields_initialized", "itd_json"]
+                for key in keys_to_clear:
+                    st.session_state.pop(key, None)
+                
+                st.success("✅ Client deleted successfully.")
+                st.rerun()
+            except Exception as e:
+                st.error(f"Error deleting client: {str(e)}")
     
     # ==================== Load Previous Data ====================
     form16_data = load_form16_data(client_id)
