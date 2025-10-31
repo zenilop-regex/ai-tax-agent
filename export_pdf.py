@@ -12,13 +12,11 @@ def generate_pdf(data):
         if isinstance(value, dict):  # for quarterly_summary or nested dicts
             pdf.cell(200, 10, txt=f"{key}:", ln=True)
             for subkey, subvalue in value.items():
-                val_str = str(subvalue).replace("₹", "Rs")  # Replace rupee symbol with Rs
+                val_str = str(subvalue).replace("â‚¹", "Rs")  # Replace rupee symbol with Rs
                 pdf.cell(200, 10, txt=f"   {subkey}: {val_str}", ln=True)
         else:
-            val_str = str(value).replace("₹", "Rs")  # Replace rupee symbol with Rs
+            val_str = str(value).replace("â‚¹", "Rs")  # Replace rupee symbol with Rs
             pdf.cell(200, 10, txt=f"{key}: {val_str}", ln=True)
 
-    # Output PDF as string and encode to bytes for Streamlit download
-    pdf_bytes = pdf.output(dest='S').encode('latin-1')
-
-    return pdf_bytes
+    # Output PDF as bytes directly
+    return pdf.output(dest='S').encode('latin-1')  # 'S' returns string, encode to bytes
