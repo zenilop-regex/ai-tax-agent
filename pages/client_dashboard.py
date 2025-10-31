@@ -320,7 +320,7 @@ if "current_client" in st.session_state:
         st.error("No client selected or loaded.")
     else:
         client_id = client["client_id"]
-    client_dir = os.path.join(DATA_DIR, client_id)
+        client_dir = os.path.join(DATA_DIR, client_id)
     
     st.markdown("### 👤 Client Dashboard")
     st.json(client)
