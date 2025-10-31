@@ -12,7 +12,7 @@ st.markdown(
     """
     <div style='text-align: center; padding: 2rem;'>
         <h1>🤖 AI Tax Filing Agent</h1>
-        <p style='font-size: 1.2rem;'>Choose your workflow from the sidebar →</p>
+        <p style='font-size: 1.2rem;'>Choose your workflow from the sidebar ⇦</p>
     </div>
     """,
     unsafe_allow_html=True
